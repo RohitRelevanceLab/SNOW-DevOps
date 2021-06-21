@@ -4,3 +4,4 @@ Integration with jira.
 Integration with github.
 Integration with jenkins.
 Change accelerations.
+Insight
