@@ -1,17 +1,25 @@
-node {
-    stage("build") {
-        snDevOpsStep(enabled:false)
-.
-.
-.
-    stage("test") {
-        snDevOpsStep(ignoreErrors:false)
-.
-.
-. 
-    stage("deploy") {
-        snDevOpsStep()
-        snDevOpsChange()
-.
-.
-.
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                snDevOpsStep()
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                snDevOpsStep()
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                snDevOpsStep()
+                snDevOpsChange()
+                echo 'Deploying....'
+            }
+        }
+    }
+}
